@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk5hbn5v0gptf"]
+
+[ext_resource type="Script" path="res://Scenes/score.gd" id="1_l2fh8"]
+
+[sub_resource type="SystemFont" id="SystemFont_8fxi1"]
+subpixel_positioning = 0
+
+[node name="Score" type="CanvasLayer"]
+script = ExtResource("1_l2fh8")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Player 1 wins!!!"
+horizontal_alignment = 1
+
+[node name="net" type="Line2D" parent="."]
+modulate = Color(1, 1, 1, 0.45098)
+position = Vector2(512, 0)
+points = PackedVector2Array(0, 0, 0, 600)
+width = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+
+[node name="score_player2" type="Label" parent="."]
+offset_left = 552.0
+offset_top = 8.0
+offset_right = 601.0
+offset_bottom = 127.0
+theme_override_fonts/font = SubResource("SystemFont_8fxi1")
+theme_override_font_sizes/font_size = 85
+text = "0"
+horizontal_alignment = 1
+
+[node name="score_player1" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 8.0
+offset_right = 473.0
+offset_bottom = 127.0
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_8fxi1")
+theme_override_font_sizes/font_size = 85
+text = "0"
+horizontal_alignment = 1
+
+[node name="WinText" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinTextLabel" type="RichTextLabel" parent="WinText"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -34.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Player 1 wins!!!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+
+[node name="PlayAgainButton" type="Button" parent="WinText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = 84.0
+offset_right = 116.5
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Play Again? "
+
+[connection signal="pressed" from="WinText/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
